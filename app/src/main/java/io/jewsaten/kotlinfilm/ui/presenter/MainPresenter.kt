@@ -36,8 +36,4 @@ class MainPresenter(
         view.showFilms(event.films)
     }
 
-    fun onVideoClicked(){
-        view.startPlay()
-    }
-
 }

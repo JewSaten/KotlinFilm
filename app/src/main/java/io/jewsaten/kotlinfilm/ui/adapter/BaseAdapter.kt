@@ -3,13 +3,12 @@ package io.jewsaten.kotlinfilm.ui.adapter
 import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import io.jewsaten.kotlinfilm.ui.activity.ViewAnkoComponent
-import io.jewsaten.kotlinfilm.util.singleClick
 import kotlin.properties.Delegates
 
 /**
  * Created by Administrator on 2018/3/30.
  */
-abstract class BaseAdapter<Item, Component : ViewAnkoComponent<RecyclerView>>(val listener: (Item) -> Unit = {})
+abstract class BaseAdapter<Item, Component : ViewAnkoComponent<RecyclerView>>
     : RecyclerView.Adapter<BaseAdapter.BaseViewHolder<Component>>() {
 
     abstract val bind: Component.(item: Item) -> Unit
@@ -24,7 +23,6 @@ abstract class BaseAdapter<Item, Component : ViewAnkoComponent<RecyclerView>>(va
 
     override fun onBindViewHolder(holder: BaseViewHolder<Component>, position: Int) {
         val item = items[position]
-        holder.itemView.singleClick { listener(item) }
         holder.ui.bind(item)
     }
 
